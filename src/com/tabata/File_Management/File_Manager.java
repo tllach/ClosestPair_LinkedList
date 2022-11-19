@@ -1,4 +1,4 @@
-package com.tabata;
+package com.tabata.File_Management;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,12 +13,12 @@ import java.io.PrintWriter;
  *     Class made for the file management
  */
 
-public final class File_Managment {
+public final class File_Manager {
 
     private final String filename;
     private PrintWriter out;
 
-    public File_Managment(String filename){
+    public File_Manager(String filename){
         this.filename = filename;
         create(filename);
     }

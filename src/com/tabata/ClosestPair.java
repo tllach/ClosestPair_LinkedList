@@ -1,5 +1,9 @@
 package com.tabata;
 
+import com.tabata.Algorithm.DivideAndConquer;
+import com.tabata.Data_Structure.Point;
+import com.tabata.File_Management.File_Manager;
+
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -22,7 +26,7 @@ class ClosestPair{
      */
     public void run(int nmax) throws FileNotFoundException {
         DivideAndConquer divAndConq = new DivideAndConquer();
-        File_Managment file = new File_Managment("pruebas.txt");
+        File_Manager file = new File_Manager("pruebas.txt");
         file.openWriter();
         int j = 4;
         int n = (int) Math.pow(2, j);

@@ -1,4 +1,4 @@
-package com.tabata;
+package com.tabata.Data_Structure;
 
 public class LinkedList {
 
@@ -16,9 +16,7 @@ public class LinkedList {
         }
     }
 
-    // display() will display all the nodes in the singly linked list
     public void display(){
-        // First lets create a node current that will point to the node head
         Node current = head;
 
         if(current == null){

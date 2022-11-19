@@ -1,4 +1,7 @@
-package com.tabata;
+package com.tabata.Algorithm;
+
+import com.tabata.Data_Structure.Pair;
+import com.tabata.Data_Structure.Point;
 
 import java.util.ArrayList;
 

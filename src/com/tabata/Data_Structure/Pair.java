@@ -1,4 +1,4 @@
-package com.tabata;
+package com.tabata.Data_Structure;
 
 
 public class Pair{

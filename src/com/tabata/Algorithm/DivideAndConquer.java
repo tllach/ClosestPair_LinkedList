@@ -1,4 +1,8 @@
-package com.tabata;
+package com.tabata.Algorithm;
+
+import com.tabata.Data_Structure.Pair;
+import com.tabata.Data_Structure.Point;
+import com.tabata.Time_Management.Time_Manager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +33,7 @@ public class DivideAndConquer {
      * @param n tamaño de las coordendas
      */
     public void run(ArrayList<Point> coords, int n){
-        Time_Managment time = new Time_Managment();
+        Time_Manager time = new Time_Manager();
         elapsedTime = 0;
         numOperations = 0;
         time.startTime();
