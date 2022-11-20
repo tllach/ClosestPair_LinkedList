@@ -1,5 +1,6 @@
 package com.tabata.Algorithm;
 
+import com.tabata.Data_Structure.LinkedList;
 import com.tabata.Data_Structure.Pair;
 import com.tabata.Data_Structure.Point;
 import com.tabata.Time_Management.Time_Manager;
@@ -21,10 +22,10 @@ public class DivideAndConquer {
     /* data members */
     private int numOperations;
     private double elapsedTime;
-    private ArrayList<Pair> closestPairs;
+    private LinkedList closestPairs;
 
     public DivideAndConquer(){
-        closestPairs = new ArrayList<>();
+        closestPairs = new LinkedList();
     }
 
     /**
@@ -32,13 +33,13 @@ public class DivideAndConquer {
      * @param coords dataset
      * @param n tamaño de las coordendas
      */
-    public void run(ArrayList<Point> coords, int n){
+    public void run(LinkedList coords, int n){
         Time_Manager time = new Time_Manager();
         elapsedTime = 0;
         numOperations = 0;
         time.startTime();
         divideAndConquer(coords, n);
-        findTheClosestPoint(closestPairs);
+        //findTheClosestPoint(closestPairs);
         time.stopTime();
         elapsedTime = time.getElapsedTime();
     }
@@ -47,17 +48,19 @@ public class DivideAndConquer {
      * Funcion que implementa el algoritmo divideAndConquer
      * @param coords lista de coordenadas a dividir
      */
-    private void divideAndConquer(ArrayList<Point> coords, int n){
+    private void divideAndConquer(LinkedList coords, int n){
         BrutalForce brutalForce = new BrutalForce();
-        ArrayList<Point> Lx = new ArrayList<Point>(coords.subList(0, n / 2));
-        ArrayList<Point> Rx = new ArrayList<Point>(coords.subList(n / 2, n));
+        LinkedList Lx = new LinkedList();
+        LinkedList Rx = new LinkedList();
+        Lx = Lx.sublist(coords, 0, n/2-1);
+        Rx = Rx.sublist(coords,n/2, n);
 
         //list created just to iterate between List
-        ArrayList<ArrayList<Point>> lists = new ArrayList<>();
+        ArrayList<LinkedList> lists = new ArrayList<>();
         lists.add(Lx);
         lists.add(Rx);
-
-        for(ArrayList<Point> list: lists){
+        /*
+        for(LinkedList list: lists){
             int size = list.size();
             //checking size of the list
             if(size <= 3){
@@ -66,6 +69,7 @@ public class DivideAndConquer {
                 divideAndConquer(list, size);
             }
         }
+         */
         numOperations = n;
     }
 
@@ -88,10 +92,4 @@ public class DivideAndConquer {
         return elapsedTime;
     }
 
-    public void printList(ArrayList<Point> coords){
-        for(Point p: coords){
-            System.out.println("[" + p.getX() + "," + p.getY() + "]");
-        }
-        System.out.println("-------------------");
-    }
 }

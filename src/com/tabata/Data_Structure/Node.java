@@ -1,5 +1,14 @@
 package com.tabata.Data_Structure;
 
+/*
+ * Algoritmos Y Complejidad                                 18/11/22
+ * Tabata Llach Bruges, Katy Diaz Beltran
+ *
+ * Class:
+ *     our own implementation of a Node, it'll be used in LinkedList
+ */
+
+
 public final class Node {
     /* data members */
     private Point data;
@@ -32,4 +41,5 @@ public final class Node {
     public void setNext(Node n){
         this.next = n;
     }
+
 }

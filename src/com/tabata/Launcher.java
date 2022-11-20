@@ -6,6 +6,6 @@ public class Launcher {
 
     public static void main(String[] args) throws FileNotFoundException {
         ClosestPair closestPair = new ClosestPair();
-        closestPair.run(22);
+        closestPair.run(3);
     }
 }

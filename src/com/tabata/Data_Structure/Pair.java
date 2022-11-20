@@ -1,7 +1,7 @@
 package com.tabata.Data_Structure;
 
 
-public class Pair{
+public final class Pair{
 
     /* data members */
     private final Point p1, p2; //points of pair
