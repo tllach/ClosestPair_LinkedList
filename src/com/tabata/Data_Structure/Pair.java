@@ -21,6 +21,10 @@ public final class Pair{
         this.distance = distance;
     }
 
+    public String toString() {
+        return ("[" + this.p1.toString() + "," + this.p2.toString() + "] --> " + this.distance);
+    }
+
     /* getters */
     public Point getP1(){
         return this.p1;

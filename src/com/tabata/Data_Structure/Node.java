@@ -12,6 +12,7 @@ package com.tabata.Data_Structure;
 public final class Node {
     /* data members */
     private Point data;
+    private Pair dataPair;
     private Node next;
 
     /* constructor */
@@ -25,21 +26,32 @@ public final class Node {
         next = null;
     }
 
-    /* getters */
-    public Point getData() {
-        return this.data;
+    public Node(Pair p){
+        dataPair = p;
+        next = null;
     }
+
+    /* getters */
 
     public Node getNext(){
         return this.next;
     }
 
-    public void setData(Point p){
-        this.data = p;
+    //for points
+    public Point getPointData() {
+        return this.data;
     }
 
-    public void setNext(Node n){
+    public void setNextPoint(Node n){
         this.next = n;
     }
 
+    //for pair
+    public Pair getPairData() {
+        return this.dataPair;
+    }
+
+    public void setNextPair(Node n){
+        this.next = n;
+    }
 }

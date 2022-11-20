@@ -1,6 +1,7 @@
 package com.tabata.Algorithm;
 
 import com.tabata.Data_Structure.LinkedList;
+import com.tabata.Data_Structure.Node;
 import com.tabata.Data_Structure.Pair;
 import com.tabata.Data_Structure.Point;
 import com.tabata.Time_Management.Time_Manager;
@@ -39,7 +40,7 @@ public class DivideAndConquer {
         numOperations = 0;
         time.startTime();
         divideAndConquer(coords, n);
-        //findTheClosestPoint(closestPairs);
+        findTheClosestPoint(closestPairs, n);
         time.stopTime();
         elapsedTime = time.getElapsedTime();
     }
@@ -59,7 +60,6 @@ public class DivideAndConquer {
         ArrayList<LinkedList> lists = new ArrayList<>();
         lists.add(Lx);
         lists.add(Rx);
-        /*
         for(LinkedList list: lists){
             int size = list.size();
             //checking size of the list
@@ -69,7 +69,6 @@ public class DivideAndConquer {
                 divideAndConquer(list, size);
             }
         }
-         */
         numOperations = n;
     }
 
@@ -79,8 +78,18 @@ public class DivideAndConquer {
      * References:
      *  [0]: https://www.geeksforgeeks.org/comparator-comparingdouble-method-in-java-with-examples/
      */
-    private void findTheClosestPoint(ArrayList<Pair> coords){
-        Collections.sort(coords, Comparator.comparingDouble(Pair::getDistance));
+    private void findTheClosestPoint(LinkedList coords, int n){
+        double d_min =  Integer.MAX_VALUE;
+        double distance;
+        Node current = coords.getHead();
+        while(current.getNext() != null){
+            distance = current.getPairData().getDistance();
+            if(distance < d_min){
+                current = current.getNext();
+            }else{
+                break;
+            }
+        }
     }
 
     /* getters */

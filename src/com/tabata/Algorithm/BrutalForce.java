@@ -1,9 +1,8 @@
 package com.tabata.Algorithm;
 
+import com.tabata.Data_Structure.LinkedList;
 import com.tabata.Data_Structure.Pair;
 import com.tabata.Data_Structure.Point;
-
-import java.util.ArrayList;
 
 /*
  * Algoritmos Y Complejidad                                 18/11/22
@@ -25,16 +24,16 @@ public class BrutalForce {
      * @param n: tamaño de la lista de coordenadas
      * @return object Pair which contains the closest Pair and their distance of the coords given
      */
-    public Pair run(ArrayList<Point> coords, int n){
+    public Pair run(LinkedList coords, int n){
         double d_min, distance;
         d_min = 1234567890;
         Point p1 = null, p2 = null;
         for(int i = 0; i <= n-1; i++){
             for(int j = i+1; j <= n-1; j++){
-                distance = coords.get(i).getDistance(coords.get(j));
+                distance = coords.get(i).getPointData().getDistance(coords.get(j).getPointData());
                 if(distance < d_min){
-                    p1 = coords.get(i);
-                    p2 = coords.get(j);
+                    p1 = coords.get(i).getPointData();
+                    p2 = coords.get(j).getPointData();
                     d_min = distance;
                 }
             }

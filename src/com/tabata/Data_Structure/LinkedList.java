@@ -21,9 +21,34 @@ public final class LinkedList {
             head = n;
             tail = n;
         }else{
-            tail.setNext(n);
+            tail.setNextPoint(n);
             tail = n;
         }
+    }
+
+    public void add(Pair p){
+        Node n = new Node(p);
+        if(head == null){
+            head = n;
+            tail = n;
+        }else{
+            tail.setNextPoint(n);
+            tail = n;
+        }
+    }
+
+    public Node get(int index){
+        Node result = null;
+        Node current = head;
+        int i = 0;
+        while(current != null){
+            if(i == index){
+                return current;
+            }
+            i++;
+            current = current.getNext();
+        }
+        return null;
     }
 
     /* Function made to display the list */
@@ -36,7 +61,7 @@ public final class LinkedList {
         }
         System.out.println("The nodes of the singly linked list are: ");
         while(current != null){
-            System.out.print(current.getData().toString() +" -> ");
+            System.out.print(current.getPointData().toString() +" -> ");
             current = current.getNext();
         }
         if(current == null)
@@ -61,8 +86,8 @@ public final class LinkedList {
      * References:
      * [0]: https://www.geeksforgeeks.org/merge-sort-for-linked-list/
      */
-    public void sort(Node head){
-        this.mergeSort(head);
+    public void sort(){
+        this.mergeSort(this.head);
     }
 
     /* function used in merge sorting */
@@ -76,24 +101,24 @@ public final class LinkedList {
             return a;
 
         /* to sort for x primarly */
-        if (a.getData().getX() < b.getData().getX()) {
+        if (a.getPointData().getX() < b.getPointData().getX()) {
             result = a;
-            result.setNext(sortedMerge(a.getNext(), b));
+            result.setNextPoint(sortedMerge(a.getNext(), b));
 
         }else
             /* case both of x are equal */
-            if(a.getData().getX() == b.getData().getX()) {
+            if(a.getPointData().getX() == b.getPointData().getX()) {
                 /* to sort for y secondly */
-                if (a.getData().getY() <= b.getData().getY()) {
+                if (a.getPointData().getY() <= b.getPointData().getY()) {
                     result = a;
-                    result.setNext(sortedMerge(a.getNext(), b));
+                    result.setNextPoint(sortedMerge(a.getNext(), b));
                 } else {
                     result = b;
-                    result.setNext(sortedMerge(a, b.getNext()));
+                    result.setNextPoint(sortedMerge(a, b.getNext()));
                 }
             } else {
                 result = b;
-                result.setNext(sortedMerge(a, b.getNext()));
+                result.setNextPoint(sortedMerge(a, b.getNext()));
             }
         return result;
     }
@@ -109,7 +134,7 @@ public final class LinkedList {
         Node nextofmiddle = middle.getNext();
 
         // set the next of middle node to null
-        middle.setNext(null);
+        middle.setNextPoint(null);
 
         // Apply mergeSort on left list
         Node left = mergeSort(h);
@@ -143,7 +168,7 @@ public final class LinkedList {
         Node current = list.getHead();
         while(current != null){
             if(i >= init){
-                result.add(current.getData());
+                result.add(current.getPointData());
             }
             if(i == end){
                 break;
@@ -153,8 +178,6 @@ public final class LinkedList {
         }
         return result;
     }
-
-
 
     /* getter */
     public Node getHead(){
