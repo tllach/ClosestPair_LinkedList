@@ -31,6 +31,10 @@ public final class Node {
         next = null;
     }
 
+    public void setPointData(Point p){
+        data = p;
+    }
+
     /* getters */
 
     public Node getNext(){

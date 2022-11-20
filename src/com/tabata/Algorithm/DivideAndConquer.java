@@ -69,7 +69,7 @@ public class DivideAndConquer {
                 divideAndConquer(list, size);
             }
         }
-        numOperations = n;
+        numOperations = n*n;
     }
 
     /**

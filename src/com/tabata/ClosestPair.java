@@ -35,7 +35,9 @@ class ClosestPair{
         int n = (int) Math.pow(2, j);
         while(n <= Math.pow(2,nmax)){
             LinkedList coords = createCoordinates(n);
+            coords.display();
             coords = sort(coords);
+            coords.display();
             divAndConq.run(coords, n);
             int numOper = divAndConq.getNumOperations();
             double elapsedTime = divAndConq.getElapsedTime();
@@ -75,7 +77,7 @@ class ClosestPair{
      * @return coords sorted
      */
     public LinkedList sort(LinkedList coords){
-        coords.sort();
+        coords.sortList();
         return coords;
     }
 }

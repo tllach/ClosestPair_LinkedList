@@ -82,85 +82,53 @@ public final class LinkedList {
 
     /* functions to do the sorting function */
     /**
-     * Merge sorting
+     * Sort
      * References:
-     * [0]: https://www.geeksforgeeks.org/merge-sort-for-linked-list/
+     * [0]: https://www.geeksforgeeks.org/how-to-sort-a-linkedlist-in-java/
      */
-    public void sort(){
-        this.mergeSort(this.head);
-    }
+    public void sortList() {
+        // Node current will point to head
+        Node current = this.head, index = null;
 
-    /* function used in merge sorting */
-    private Node sortedMerge(Node a, Node b){
-        Node result = null;
+        Point temp;
 
-        /* Base cases */
-        if (a == null)
-            return b;
-        if (b == null)
-            return a;
+        if (this.head == null) {
+            return;
+        }
+        else {
+            while (current != null) {
+                // Node index will point to node next to
+                // current
+                index = current.getNext();
 
-        /* to sort for x primarly */
-        if (a.getPointData().getX() < b.getPointData().getX()) {
-            result = a;
-            result.setNextPoint(sortedMerge(a.getNext(), b));
-
-        }else
-            /* case both of x are equal */
-            if(a.getPointData().getX() == b.getPointData().getX()) {
-                /* to sort for y secondly */
-                if (a.getPointData().getY() <= b.getPointData().getY()) {
-                    result = a;
-                    result.setNextPoint(sortedMerge(a.getNext(), b));
-                } else {
-                    result = b;
-                    result.setNextPoint(sortedMerge(a, b.getNext()));
+                while (index != null) {
+                    // If current node's data is greater
+                    // than index's node data, swap the data
+                    // between them
+                    /* to check for x primarly */
+                    if (current.getPointData().getX() > index.getPointData().getX()) {
+                        temp = current.getPointData();
+                        current.setPointData( index.getPointData());
+                        index.setPointData(temp);
+                    }else{
+                        /* to check for y secondly */
+                        if(current.getPointData().getX() == index.getPointData().getX()){
+                            if(current.getPointData().getY() >= index.getPointData().getY()){
+                                temp = current.getPointData();
+                                current.setPointData( index.getPointData());
+                                index.setPointData(temp);
+                            }
+                        }else{
+                            index = index.getNext();
+                        }
+                    }
                 }
-            } else {
-                result = b;
-                result.setNextPoint(sortedMerge(a, b.getNext()));
+                current = current.getNext();
             }
-        return result;
-    }
-
-    private Node mergeSort(Node h) {
-        // Base case : if head is null
-        if (h == null || h.getNext() == null) {
-            return h;
         }
-
-        // get the middle of the list
-        Node middle = getMiddle(h);
-        Node nextofmiddle = middle.getNext();
-
-        // set the next of middle node to null
-        middle.setNextPoint(null);
-
-        // Apply mergeSort on left list
-        Node left = mergeSort(h);
-
-        // Apply mergeSort on right list
-        Node right = mergeSort(nextofmiddle);
-
-        // Merge the left and right lists
-        Node sortedlist = sortedMerge(left, right);
-
-        return sortedlist;
     }
 
-    // Utility function to get the middle of the linked list
-    private Node getMiddle(Node head) {
-        if (head == null)
-            return head;
 
-        Node slow = head, fast = head;
-
-        while (fast.getNext() != null && fast.getNext().getNext() != null) {
-            slow = slow.getNext();
-            fast = fast.getNext().getNext();
-        }
-        return slow;
-    }
 
     public LinkedList sublist(LinkedList list, int init, int end){
         LinkedList result = new LinkedList();
