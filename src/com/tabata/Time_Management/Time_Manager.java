@@ -1,4 +1,4 @@
-package com.tabata;
+package com.tabata.Time_Management;
 
 /*
  * Algoritmos Y Complejidad                                 18/11/22
@@ -8,7 +8,7 @@ package com.tabata;
  *     Class made for the time management
  */
 
-public class Time_Managment {
+public class Time_Manager {
 
     /* data members */
     private double elapsedTime;
@@ -16,7 +16,7 @@ public class Time_Managment {
     private long end;
 
     /* constructor */
-    public Time_Managment() {
+    public Time_Manager() {
     }
 
     public void startTime(){

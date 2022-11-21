@@ -1,7 +1,7 @@
-package com.tabata;
+package com.tabata.Data_Structure;
 
 
-public class Pair{
+public final class Pair{
 
     /* data members */
     private final Point p1, p2; //points of pair
@@ -19,6 +19,10 @@ public class Pair{
         this.p1 = p1;
         this.p2 = p2;
         this.distance = distance;
+    }
+
+    public String toString() {
+        return ("[" + this.p1.toString() + "," + this.p2.toString() + "] --> " + this.distance);
     }
 
     /* getters */

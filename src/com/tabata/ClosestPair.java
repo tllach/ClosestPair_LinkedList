@@ -1,7 +1,14 @@
 package com.tabata;
 
+import com.tabata.Algorithm.DivideAndConquer;
+import com.tabata.Data_Structure.LinkedList;
+import com.tabata.Data_Structure.Point;
+import com.tabata.File_Management.File_Manager;
+
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Random;
 
 /*
  * Algoritmos Y Complejidad                                 18/11/22
@@ -22,13 +29,15 @@ class ClosestPair{
      */
     public void run(int nmax) throws FileNotFoundException {
         DivideAndConquer divAndConq = new DivideAndConquer();
-        File_Managment file = new File_Managment("pruebas.txt");
+        File_Manager file = new File_Manager("pruebas.txt");
         file.openWriter();
         int j = 4;
         int n = (int) Math.pow(2, j);
         while(n <= Math.pow(2,nmax)){
-            ArrayList<Point> coords = createCoordinates(n);
+            LinkedList coords = createCoordinates(n);
+            coords.display();
             coords = sort(coords);
+            coords.display();
             divAndConq.run(coords, n);
             int numOper = divAndConq.getNumOperations();
             double elapsedTime = divAndConq.getElapsedTime();
@@ -44,14 +53,15 @@ class ClosestPair{
      * @param n: nro total de coordenadas que se crearan
      * @return lista de coordenadas a usar
      */
-    public ArrayList<Point> createCoordinates(int n){
-        ArrayList<Point> coords = new ArrayList<>();
+    public LinkedList createCoordinates(int n) {
+        LinkedList coords = new LinkedList();
         Random rand = new Random();
-        for(int i = 0; i < n; i++){
+        coords.add(new Point(0, rand.nextInt(11)));
+        for(int i = 0; i < n-1; i++){
             int y = rand.nextInt(11);
             if(i < n/2){
                 int x = rand.nextInt(11);
-                coords.add(new Point(x,y));
+                coords.add(new Point(x+1,y));
                 continue;
             }
             //to make the range of the other half of coordinates be between 10 to 20
@@ -66,13 +76,8 @@ class ClosestPair{
      * @param coords dataset a organizar
      * @return coords sorted
      */
-    public ArrayList<Point> sort(ArrayList<Point> coords){
-        Collections.sort(coords ,new Comparator<Point>(){
-            public int compare(Point p1, Point p2){
-                return Integer.valueOf(p1.getX()).compareTo(p2.getX());
-            }
-        });
+    public LinkedList sort(LinkedList coords){
+        coords.sortList();
         return coords;
     }
-
 }
